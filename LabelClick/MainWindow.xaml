@@ -1,0 +1,27 @@
+﻿<Window x:Class="LabelClick.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewModel="clr-namespace:LabelClick"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LabelClick;component/Dictionary1.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <viewModel:MyViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Label x:Name="lblNext" Style="{StaticResource LabelButton}" Grid.Row="4" Width="250" Height="75" PreviewTouchUp="lblNext_TouchDown">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding LabelClicked}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            Next : Step 3
+        </Label>
+    </Grid>
+</Window>
